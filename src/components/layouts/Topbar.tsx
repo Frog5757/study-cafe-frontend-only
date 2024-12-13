@@ -29,17 +29,11 @@ export default function Topbar() {
           <Link to="/" css={linkStyle}>
             <li css={topbarContent}>ホーム</li>
           </Link>
-          <Link to="/diagnostic" css={linkStyle}>
+          <Link to="/diagnostic/subject" css={linkStyle}>
             <li css={topbarContent}>診断テスト</li>
           </Link>
           <Link to="/login" css={linkStyle}>
             <li css={topbarContent}>確認テスト</li>
-          </Link>
-          <Link to="/" css={linkStyle}>
-            <li css={topbarContent}>参考書</li>
-          </Link>
-          <Link to="/" css={linkStyle}>
-            <li css={topbarContent}>ロードマップ</li>
           </Link>
 
           {/* ログイン状態に応じて「マイページ」または「ログイン」を表示 */}
