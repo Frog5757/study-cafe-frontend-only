@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import Topbar from "../components/layouts/Topbar";
 import Header from "../components/uiParts/Header";
 import Button from "../components/uiParts/button/Button";
-import MainTitle from "../components/uiParts/MainTitle";
+import MainTitle from "../components/uiParts/title/MainTitle";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import QuizIcon from "@mui/icons-material/Quiz";
 import BodyLayout from "../components/layouts/BodyLayout";
@@ -21,7 +21,7 @@ export default function Home() {
           <Button
             icon={<ManageSearchIcon />}
             title="診断テスト"
-            to="/diagnostic/subject"
+            to="/diagnostic/subjectselect"
             description="苦手な単元の原因を診断できます。"
           />
           <Button

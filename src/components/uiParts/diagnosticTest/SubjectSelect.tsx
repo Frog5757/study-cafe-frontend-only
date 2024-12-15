@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Button from "../../uiParts/button/Button";
-import MainTitle from "../../uiParts/MainTitle";
 import { Abc, SquareFoot } from "@mui/icons-material";
 
 interface SubjectSelectProps {
@@ -12,7 +11,6 @@ interface SubjectSelectProps {
 export default function SubjectSelect({ onSelect }: SubjectSelectProps) {
   return (
     <>
-      <MainTitle title="診断したい科目を選択してください" />
       <div css={buttonsWrapper}>
         <Button
           icon={<SquareFoot />}
