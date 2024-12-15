@@ -7,13 +7,13 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB-As3JI0J0pKs_0jc-7-5fWAMt9myLbCU",
-  authDomain: "study-cafe-1c22b.firebaseapp.com",
-  projectId: "study-cafe-1c22b",
-  storageBucket: "study-cafe-1c22b.firebasestorage.app",
-  messagingSenderId: "30896203304",
-  appId: "1:30896203304:web:b598602249cfb9acf2f71d",
-  measurementId: "G-42FLTH6FND",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
