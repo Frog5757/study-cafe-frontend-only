@@ -1,22 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { auth } from "../../config/firebase";
-import { User } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
 
 export default function Topbar() {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    // Firebaseのログイン状態を監視
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // ユーザー状態をセット
-    });
-    return () => unsubscribe();
-  }, []);
-
   return (
     <div css={topbarContainer}>
       <div css={topbarLeft}>
@@ -35,17 +21,9 @@ export default function Topbar() {
           <Link to="/login" css={linkStyle}>
             <li css={topbarContent}>確認テスト</li>
           </Link>
-
-          {/* ログイン状態に応じて「マイページ」または「ログイン」を表示 */}
-          {user ? (
-            <Link to="/mypage" css={linkStyle}>
-              <li css={topbarContent}>マイページ</li>
-            </Link>
-          ) : (
-            <Link to="/login" css={linkStyle}>
-              <li css={topbarContent}>ログイン</li>
-            </Link>
-          )}
+          <Link to="/login" css={linkStyle}>
+            <li css={topbarContent}>ログイン</li>
+          </Link>
         </ul>
       </div>
     </div>
