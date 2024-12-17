@@ -1,23 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 interface ResultProps {
+  // ユーザーが回答した Yes または No のリスト
   userAnswers: string[];
-  unit: string;
+  // 質問オブジェクト
   questions: { id: number; question: string; resultMessage: string }[]; // 質問配列
 }
 
-const Result: React.FC<ResultProps> = ({ userAnswers, unit, questions }) => {
+const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const determineResult = () => {
     const results = questions
       .map((q, index) => (userAnswers[index] === "No" ? q.resultMessage : null))
       .filter((message) => message !== null);
     if (results.length === 0) {
-      return `${unit}：あなたは完璧です！`;
+      return `あなたは完璧です！`;
     }
     return results.join("\n");
   };
   return (
-    <div css={containerStyle}>
+    <div css={resultwrapper}>
       <div css={resultContainer}>
         <h2 css={resultTitle}>診断結果</h2>
         <p css={resultContent}>{determineResult()}</p>
@@ -28,7 +29,7 @@ const Result: React.FC<ResultProps> = ({ userAnswers, unit, questions }) => {
   );
 };
 
-const containerStyle = css`
+const resultwrapper = css`
   display: flex;
   flex-direction: column;
   align-items: center;

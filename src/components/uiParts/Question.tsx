@@ -10,14 +10,12 @@ interface Question {
 }
 interface QuestionProps {
   questions: Question[];
-  unit: string;
   resultMessage?: string;
 }
-const Question: React.FC<QuestionProps> = ({ questions, unit }) => {
+const Question: React.FC<QuestionProps> = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [isFinished, setIsFinished] = useState(false);
-
   const handleAnswer = (answer: string) => {
     setUserAnswers((prev) => [...prev, answer]);
     if (currentIndex < questions.length - 1) {
@@ -27,9 +25,7 @@ const Question: React.FC<QuestionProps> = ({ questions, unit }) => {
     }
   };
   if (isFinished) {
-    return (
-      <Result userAnswers={userAnswers} unit={unit} questions={questions} />
-    );
+    return <Result userAnswers={userAnswers} questions={questions} />;
   }
 
   const currentQuestion = questions[currentIndex];

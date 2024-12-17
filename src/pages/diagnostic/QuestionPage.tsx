@@ -17,25 +17,25 @@ const QuestionPage = () => {
       {unit === "seifu-no-imi" && (
         <>
           <Header title="診断テスト(正の数と負の数)" dec="" />
-          <Question questions={seifunokazuQuestions} unit="正負の数" />
+          <Question questions={seifunokazuQuestions} />
         </>
       )}
       {unit === "add-sub" && (
         <>
           <Header title="診断テスト(加法・減法)" dec="" />
-          <Question questions={addSubQuestions} unit="四則計算" />
+          <Question questions={addSubQuestions}  />
         </>
       )}
       {unit === "bedoushi-kihon" && (
         <>
           <Header title="診断テスト(be動詞の基本)" dec="" />
-          <Question questions={bedoushiNoKihonQuestion} unit="正負の数" />
+          <Question questions={bedoushiNoKihonQuestion}  />
         </>
       )}
       {unit === "bedoushi-kako-gimon" && (
         <>
           <Header title="診断テスト(be動詞の否定文と疑問文)" dec="" />
-          <Question questions={bedoushiNoKakoGimonQuestion} unit="四則計算" />
+          <Question questions={bedoushiNoKakoGimonQuestion}  />
         </>
       )}
     </>

@@ -100,6 +100,6 @@ export const bedoushiNoKakoGimonQuestion = [
   {
     id: 4,
     question: "be動詞の疑問文の答え方がわかる",
-    resultMessage: "・主語、動詞の位置関係を理解しましょう",
+    resultMessage: "・be動詞の疑問文の答え方を確認しましょう",
   },
 ];
