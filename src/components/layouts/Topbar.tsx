@@ -15,11 +15,8 @@ export default function Topbar() {
           <Link to="/" css={linkStyle}>
             <li css={topbarContent}>ホーム</li>
           </Link>
-          <Link to="/diagnostic/subject" css={linkStyle}>
+          <Link to="/diagnostic/subjectselect" css={linkStyle}>
             <li css={topbarContent}>診断テスト</li>
-          </Link>
-          <Link to="/login" css={linkStyle}>
-            <li css={topbarContent}>確認テスト</li>
           </Link>
           <Link to="/login" css={linkStyle}>
             <li css={topbarContent}>ログイン</li>

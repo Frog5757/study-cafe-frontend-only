@@ -4,7 +4,7 @@ interface UnitProps {
   items: string[];
   fontColor: string;
 }
-const Unit: React.FC<UnitProps> = ({ items, fontColor }) => {
+const Items: React.FC<UnitProps> = ({ items, fontColor }) => {
   return (
     <>
       <ul css={itemsStyle}>
@@ -30,4 +30,4 @@ const itemStyle = css`
   justify-content: center;
   font-size: 30px;
 `;
-export default Unit;
+export default Items;

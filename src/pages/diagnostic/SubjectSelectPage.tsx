@@ -2,7 +2,7 @@
 import Topbar from "../../components/layouts/Topbar";
 import Header from "../../components/uiParts/Header";
 import BodyLayout from "../../components/layouts/BodyLayout";
-import SubjectSelect from "../../components/uiParts/diagnosticTest/SubjectSelect";
+import SubjectSelect from "../../components/uiParts/SubjectSelect";
 import MainTitle from "../../components/uiParts/title/MainTitle";
 import { useNavigate } from "react-router-dom";
 

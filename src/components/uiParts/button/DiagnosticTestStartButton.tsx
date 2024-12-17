@@ -1,14 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 interface DiagnosticTestStartButtonProps {
+  title: string;
   onClick?: () => void;
 }
 const DiagnosticTestStartButton: React.FC<DiagnosticTestStartButtonProps> = ({
-  onClick,
+  onClick,title
 }) => {
   return (
     <div css={startButton} onClick={onClick}>
-      診断テストを開始する
+      {title}
     </div>
   );
 };

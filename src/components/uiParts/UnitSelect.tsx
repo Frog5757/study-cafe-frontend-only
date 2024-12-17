@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "../../uiParts/button/Button";
+import Button from "./button/Button";
 
 import { ReactNode } from "react";
 

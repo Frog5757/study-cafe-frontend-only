@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "../../uiParts/button/Button";
+import Button from "./button/Button";
 import { Abc, SquareFoot } from "@mui/icons-material";
 
 interface SubjectSelectProps {
-  onSelect?: (subject: string) => void; // オプション: クリック時の動作
-  links?: { math: string; english: string }; // 各ボタンのリンク先
+  onSelect?: (subject: string) => void;
+  links?: { math: string; english: string };
 }
 
 export default function SubjectSelect({ onSelect }: SubjectSelectProps) {
