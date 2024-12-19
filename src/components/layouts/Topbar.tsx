@@ -1,8 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth"; // 認証状態を取得するカスタムフック
 
 export default function Topbar() {
+  const { user } = useAuth(); // ユーザーの認証状態を取得
+
   return (
     <div css={topbarContainer}>
       <div css={topbarLeft}>
@@ -18,9 +21,32 @@ export default function Topbar() {
           <Link to="/diagnostic/subjectselect" css={linkStyle}>
             <li css={topbarContent}>診断テスト</li>
           </Link>
-          <Link to="/login" css={linkStyle}>
-            <li css={topbarContent}>ログイン</li>
-          </Link>
+
+          {user ? ( // ログイン状態の場合
+            <>
+              <Link to="/mypage" css={linkStyle}>
+                <li css={topbarContent}>マイページ</li>
+              </Link>
+              <li
+                css={topbarContent}
+                onClick={() => {
+                  /* ログアウト処理を追加 */
+                }}
+              >
+                ログアウト
+              </li>
+            </>
+          ) : (
+            // 未ログイン状態の場合
+            <>
+              <Link to="/login" css={linkStyle}>
+                <li css={topbarContent}>ログイン</li>
+              </Link>
+              <Link to="/signup" css={linkStyle}>
+                <li css={topbarContent}>新規登録</li>
+              </Link>
+            </>
+          )}
         </ul>
       </div>
     </div>
@@ -66,6 +92,7 @@ const topbarContent = css`
   justify-content: center;
   padding: 0 10px;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     background-color: #f0f0f0;

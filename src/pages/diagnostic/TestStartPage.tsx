@@ -7,7 +7,7 @@ const TestStartPage = () => {
   const navigate = useNavigate();
 
   const startTest = () => {
-    navigate(`/test/${unit}`);
+    navigate(`/test/${subject}/${unit}`);
   };
 
   let headerTitle = "";

@@ -36,7 +36,7 @@ export const App = () => {
           path="/diagnostic/teststart/:subject/:unit"
           element={<TestStartPage />}
         />
-        <Route path="/test/:unit" element={<QuestionPage />} />
+        <Route path="/test/:subject/:unit" element={<QuestionPage />} />
 
         {/* ログインとサインアップページ */}
         <Route

@@ -1,5 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 interface ResultProps {
   // ユーザーが回答した Yes または No のリスト
   userAnswers: string[];
@@ -8,6 +11,7 @@ interface ResultProps {
 }
 
 const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
+  const { subject, unit } = useParams();
   const determineResult = () => {
     const results = questions
       .map((q, index) => (userAnswers[index] === "No" ? q.resultMessage : null))
@@ -22,8 +26,10 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
       <div css={resultContainer}>
         <h2 css={resultTitle}>診断結果</h2>
         <p css={resultContent}>{determineResult()}</p>
-        <p>この診断結果を保存する</p>
-        <p>もう一度診断を受ける</p>
+        <p css={saveResult}>この診断結果を保存する</p>
+        <Link to={`/diagnostic/teststart/${subject}/${unit}`} css={linkStyle}>
+          <p>もう一度診断を受ける</p>
+        </Link>
       </div>
     </div>
   );
@@ -47,7 +53,7 @@ const resultContainer = css`
   text-align: center;
   max-width: 1000px;
   width: 800px;
-  min-height: 300px; /* 最低限の高さ */
+  min-height: 300px;
   overflow: auto; /* 内容が増えたらスクロール可能にする場合 */
 `;
 
@@ -65,5 +71,21 @@ const resultContent = css`
   letter-spacing: 5px;
   white-space: pre-line; /* 改行を反映 */
   color: #2d2d2d;
+`;
+
+const linkStyle = css`
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  &:hover {
+    color: #4a4a4a;
+  }
+`;
+const saveResult = css`
+  color: inherit;
+  cursor: pointer;
+  &:hover {
+    color: #4a4a4a;
+  }
 `;
 export default Result;

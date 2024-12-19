@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 interface HeaderProps {
   title: string;
-  dec: string;
+  dec?: string;
 }
 const Header: React.FC<HeaderProps> = ({ title, dec }) => {
   return (

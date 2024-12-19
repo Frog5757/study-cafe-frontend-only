@@ -7,11 +7,11 @@ import Header from "../components/uiParts/Header";
 import BodyLayout from "../components/layouts/BodyLayout";
 import Login from "../components/auth/Login";
 import MyPage from "./MyPage";
+import MainTitle from "../components/uiParts/title/MainTitle";
 const LoginPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); // Firebase User型を使用
   const navigate = useNavigate();
 
-  // Firebase Authenticationの状態を監視
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -28,8 +28,11 @@ const LoginPage: React.FC = () => {
   return (
     <div>
       <Topbar />
-      <Header title="ログインページ" dec="" />
-      <BodyLayout>{user ? <MyPage user={user} /> : <Login />}</BodyLayout>
+      <Header title="ログインページ"/>
+      <BodyLayout>
+        <MainTitle title="ログイン" />
+        {user ? <MyPage user={user} /> : <Login />}
+      </BodyLayout>
     </div>
   );
 };

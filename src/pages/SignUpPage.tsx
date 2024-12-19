@@ -1,38 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import SignUp from "../components/auth/SignUp";
-
+import Topbar from "../components/layouts/Topbar";
+import BodyLayout from "../components/layouts/BodyLayout";
+import Header from "../components/uiParts/Header";
+import MainTitle from "../components/uiParts/title/MainTitle";
 const SignUpPage: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await SignUp(email, password);
-      // 成功した場合、リダイレクトや次のアクション
-    } catch (error: unknown) {
-      console.log(error)
-    }
-  };
-
   return (
     <div>
-      <h1>新規登録</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">登録</button>
-      </form>
+      <Topbar />
+      <Header title="新規登録ページ" />
+      <BodyLayout>
+        <MainTitle title="新規登録"/>
+        <SignUp />
+      </BodyLayout>
     </div>
   );
 };
