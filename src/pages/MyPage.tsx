@@ -83,20 +83,25 @@ const MyPage: React.FC<MyPageProps> = ({ user }) => {
         return updatedResults; // 状態を更新する
       });
 
-      alert("診断結果が削除されました");
-    } catch (error) {
+    }catch (error) {
       if (axios.isAxiosError(error)) {
+        // AxiosError の場合
         console.error(
           "診断結果削除エラー:",
           error.response?.data || error.message
         );
         alert("削除に失敗しました: " + (error.response?.data || error.message));
+      } else if (error instanceof Error) {
+        // 一般的な Error の場合
+        console.error("診断結果削除エラー:", error.message);
+        alert("削除に失敗しました: " + error.message);
       } else {
+        // 型不明な場合
         console.error("予期しないエラー:", error);
         alert("予期しないエラーが発生しました");
       }
     }
-  };
+  }
 
   if (!user) {
     return <p>ログインしてください。</p>; // userがnullの場合の処理

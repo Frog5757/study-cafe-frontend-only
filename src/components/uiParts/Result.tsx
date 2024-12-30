@@ -2,8 +2,8 @@
 import { css } from "@emotion/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { getAuth } from "firebase/auth"; // Firebase Authenticationのインポート
-import axios from "axios"; // HTTPリクエスト用のライブラリ
+import { getAuth } from "firebase/auth"; 
+import axios from "axios"; 
 import MainTitle from "./title/MainTitle";
 import BodyLayout from "../layouts/BodyLayout";
 
