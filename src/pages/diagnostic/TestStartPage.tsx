@@ -16,8 +16,8 @@ const TestStartPage = () => {
 
   if (subject === "math" || subject === "english") {
     if (subject === "math") {
-      fontColor = "#548dda";
-      if (unit === "seifu-no-imi") {
+      fontColor = "#131313";
+      if (unit === "seinosu-funosu") {
         headerTitle = "診断テスト(正の数と負の数)";
         testItems = ["数の大小", "数直線", "絶対値"];
       } else if (unit === "add-sub") {
@@ -25,13 +25,13 @@ const TestStartPage = () => {
         testItems = ["加法", "減法", "かっこがある式"];
       }
     } else if (subject === "english") {
-      fontColor = "#da5454";
+      fontColor = "#131313";
       if (unit === "bedoushi-kihon") {
         headerTitle = "診断テスト(be動詞の基本)";
         testItems = ["be動詞の意味", "be動詞の短縮形", "be動詞の使い分け"];
       } else if (unit === "bedoushi-kako-gimon") {
         headerTitle = "診断テスト(be動詞の否定文と疑問文)";
-        testItems = ["be動詞の否定文","be動詞の疑問文"];
+        testItems = ["be動詞の否定文", "be動詞の疑問文"];
       }
     }
   }

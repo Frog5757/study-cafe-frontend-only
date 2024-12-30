@@ -15,4 +15,15 @@ const mainTitle = css`
   margin-top: 20px;
   margin-bottom: 50px;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 24px; 
+    margin-top: 15px; 
+    margin-bottom: 40px;  
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
 `;

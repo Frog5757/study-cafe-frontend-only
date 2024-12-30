@@ -1,10 +1,23 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth"; // 認証状態を取得するカスタムフック
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import { auth } from "../../config/firebase"; // Firebase設定をインポート
+import { signOut } from "firebase/auth";
 
 export default function Topbar() {
-  const { user } = useAuth(); // ユーザーの認証状態を取得
+  const { user } = useAuth();
+  const navigate = useNavigate(); // ページ遷移のためのフック
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth); // Firebaseのサインアウト関数
+      navigate("/login"); // ログインページへリダイレクト
+    } catch (err) {
+      console.error("ログアウトに失敗しました:", err);
+      alert("ログアウトに失敗しました。");
+    }
+  };
 
   return (
     <div css={topbarContainer}>
@@ -22,22 +35,16 @@ export default function Topbar() {
             <li css={topbarContent}>診断テスト</li>
           </Link>
 
-          {user ? ( // ログイン状態の場合
+          {user ? (
             <>
               <Link to="/mypage" css={linkStyle}>
                 <li css={topbarContent}>マイページ</li>
               </Link>
-              <li
-                css={topbarContent}
-                onClick={() => {
-                  /* ログアウト処理を追加 */
-                }}
-              >
+              <li css={topbarContent} onClick={handleLogout}>
                 ログアウト
               </li>
             </>
           ) : (
-            // 未ログイン状態の場合
             <>
               <Link to="/login" css={linkStyle}>
                 <li css={topbarContent}>ログイン</li>
@@ -64,16 +71,37 @@ const topbarContainer = css`
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 const topbarLeft = css`
   flex: 4;
+  display: flex;
+  justify-content: flex-start; /* 左に寄せる */
+
+  @media (max-width: 768px) {
+    flex: none;
+    text-align: center;
+    margin: 10px 0;
+    width: 100%; /* 幅を100%にしてセンタリングを安定させる */
+  }
 `;
 
 const topbarRight = css`
   flex: 8;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%; 
+
+  }
 `;
 
 const topbarContents = css`
@@ -81,6 +109,14 @@ const topbarContents = css`
   display: flex;
   color: rgb(111, 111, 111);
   margin: 0;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline-start: 0;
+    padding: 0px;
+  }
 `;
 
 const topbarContent = css`
@@ -97,13 +133,25 @@ const topbarContent = css`
   &:hover {
     background-color: #f0f0f0;
   }
+
+  @media (max-width: 768px) {
+    height: 50px;
+    width: 120px;
+    font-size: 14px;
+    margin: 5px;
+  }
 `;
 
 const logo = css`
-  font-size: 15px;
+  font-size: 10px;
   font-weight: bold;
   letter-spacing: 5px;
   margin-left: 40px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    padding:10px 10px;
+  }
 `;
 
 const linkStyle = css`

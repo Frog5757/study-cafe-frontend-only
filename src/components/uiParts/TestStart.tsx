@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import Items from "./Items";
 import Header from "./Header";
 import BodyLayout from "../layouts/BodyLayout";
-import DiagnosticTestStartButton from "./button/DiagnosticTestStartButton";
+import TestStartButton from "./button/TestStartButton";
 import MainTitle from "./title/MainTitle";
 
 interface TestStartProps {
@@ -30,10 +30,7 @@ const TestStart: React.FC<TestStartProps> = ({
         <MainTitle title={mainTitle} />
         <Items items={testItems} fontColor={fontColor} />
         <div css={buttonWrapper}>
-          <DiagnosticTestStartButton
-            onClick={onStartTest}
-            title={startButtonTitle}
-          />
+          <TestStartButton onClick={onStartTest} title={startButtonTitle} />
         </div>
       </BodyLayout>
     </>

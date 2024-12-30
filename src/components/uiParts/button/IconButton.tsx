@@ -1,32 +1,31 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 interface ButtonProps {
-  icon: ReactNode;
-  title: string;
+  icon?: ReactNode;
+  buttonType?: "submit";
   to?: string;
   onClick?: () => void;
   bgColor?: string;
-  description?: string; // 説明文を追加
+  description?: string;
+  label?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const IconButton: React.FC<ButtonProps> = ({
   icon,
-  title,
   to,
   onClick,
-  bgColor = "#6d3b17b6",
-  description, // 説明文を受け取る
+  bgColor,
+  description,
+  label,
 }) => {
   const buttonContent = (
     <>
       <div css={[buttonWrapper, { backgroundColor: bgColor }]}>
-        {React.cloneElement(icon as React.ReactElement, {
-          sx: { fontSize: "100px", color: "rgba(255, 255, 255, 0.994)" },
-        })}
-        <div css={iconName}>{title}</div>
+        {icon}
+        <div css={iconName}>{label}</div>
       </div>
       {description && <div css={buttonDescription}>{description}</div>}
     </>
@@ -46,6 +45,9 @@ const Button: React.FC<ButtonProps> = ({
 const iconName = css`
   font-size: 25px;
   color: #ffffff;
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 const buttonWrapper = css`
@@ -63,6 +65,11 @@ const buttonWrapper = css`
   &:hover {
     transform: scale(1.1, 1.1);
   }
+
+  @media (max-width: 768px) {
+    height: 150px;
+    width: 150px;
+  }
 `;
 
 const linkStyle = css`
@@ -76,6 +83,14 @@ const buttonDescription = css`
   font-size: 14px;
   color: #555;
   max-width: 200px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
 `;
 
-export default Button;
+export default IconButton;

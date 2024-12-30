@@ -29,6 +29,21 @@ const buttonStyle = css`
   &:hover {
     background: #674338de;
   }
+
+  /* レスポンシブ対応 */
+  @media (max-width: 768px) {
+    font-size: 25px; /* タブレット画面ではフォントサイズを小さく */
+    height: 60px;
+    width: 180px;
+    padding: 8px 16px; /* パディングを調整 */
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px; /* スマホ画面ではさらに小さく */
+    height: 50px;
+    width: 150px;
+    padding: 6px 12px; /* パディングを調整 */
+  }
 `;
 
 export default AnswerButton;

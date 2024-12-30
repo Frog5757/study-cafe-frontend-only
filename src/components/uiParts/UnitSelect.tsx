@@ -1,24 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "./button/Button";
-
+import IconButton from "./button/IconButton";
 import { ReactNode } from "react";
-
 interface UnitSelectProps {
-  title: string;
-  subTitle: string;
-  buttons: { icon: ReactNode; title: string; to: string; bgColor: string }[];
+  buttons: { icon: ReactNode; label: string; to: string; bgColor: string }[];
 }
-
 export default function UnitSelect({ buttons }: UnitSelectProps) {
   return (
     <>
       <div css={buttonsWrapper}>
         {buttons.map((btn, index) => (
-          <Button
+          <IconButton
             key={index}
             icon={btn.icon}
-            title={btn.title}
+            label={btn.label}
             to={btn.to}
             bgColor={btn.bgColor}
           />
@@ -27,10 +22,16 @@ export default function UnitSelect({ buttons }: UnitSelectProps) {
     </>
   );
 }
-
 const buttonsWrapper = css`
   display: flex;
   justify-content: center;
   gap: 80px;
   margin-bottom: 50px;
+  @media (max-width: 768px) {
+    gap: 40px;
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    gap: 20px;
+  }
 `;

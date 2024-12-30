@@ -4,7 +4,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Home from "../src/pages/Home";
+import HomePage from "../src/pages/HomePage";
 import SubjectSelectPage from "./pages/diagnostic/SubjectSelectPage";
 import UnitSelectPage from "./pages/diagnostic/UnitSelectPage";
 import TestStartPage from "./pages/diagnostic/TestStartPage";
@@ -21,7 +21,7 @@ export const App = () => {
     <Router>
       <Routes>
         {/* ホームページ */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
 
         {/* 診断ページ */}
         <Route

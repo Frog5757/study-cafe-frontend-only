@@ -14,7 +14,7 @@ const QuestionPage = () => {
   return (
     <>
       <Topbar />
-      {unit === "seifu-no-imi" && (
+      {unit === "seinosu-funosu" && (
         <>
           <Header title="診断テスト(正の数と負の数)" dec="" />
           <Question questions={seifunokazuQuestions} />

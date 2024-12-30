@@ -6,26 +6,26 @@ import BodyLayout from "../../components/layouts/BodyLayout";
 import UnitSelect from "../../components/uiParts/UnitSelect";
 import MainTitle from "../../components/uiParts/title/MainTitle";
 import SubTitle from "../../components/uiParts/title/SubTitle";
-import { AccessTime, Calculate,} from "@mui/icons-material";
+import { AccessTime, Calculate } from "@mui/icons-material";
 
 const UnitSelectPage = () => {
   const { subject } = useParams();
-  const subjectData = {
+  const unitData = {
     math: {
       headerTitle: "診断テスト(数学)",
       headerDesc: "苦手な単元の原因を診断できます",
-      mainTitle: "診断したい単元を選んでください",
+      mainTitle: "診断したい単元を選択してください",
       subTitle: "正負の数",
       buttons: [
         {
-          icon: <Calculate />,
-          title: "正の数と負の数",
-          to: "/diagnostic/teststart/math/seifu-no-imi",
+          icon: <Calculate sx={{ fontSize: "100px", color: "#ffffff" }} />,
+          label: "正の数と負の数",
+          to: "/diagnostic/teststart/math/seinosu-funosu",
           bgColor: "#717d9d",
         },
         {
-          icon: <Calculate />,
-          title: "加法・減法",
+          icon: <Calculate sx={{ fontSize: "100px", color: "#ffffff" }} />,
+          label: "加法・減法",
           to: "/diagnostic/teststart/math/add-sub",
           bgColor: "#717d9d",
         },
@@ -38,36 +38,29 @@ const UnitSelectPage = () => {
       subTitle: "be動詞",
       buttons: [
         {
-          icon: <AccessTime />,
-          title: "be動詞の基本",
+          icon: <AccessTime sx={{ fontSize: "100px", color: "#ffffff" }} />,
+          label: "be動詞の基本",
           to: "/diagnostic/teststart/english/bedoushi-kihon",
           bgColor: "#9d7180",
         },
         {
-          icon: <AccessTime />,
-          title: "be動詞の否定文と疑問文",
+          icon: <AccessTime sx={{ fontSize: "100px", color: "#ffffff" }} />,
+          label: "be動詞の否定文と疑問文",
           to: "/diagnostic/teststart/english/bedoushi-kako-gimon",
           bgColor: "#9d7180",
         },
       ],
     },
   };
-  const selectedSubject = subjectData[subject as keyof typeof subjectData];
+  const selectedUnit = unitData[subject as keyof typeof unitData];
   return (
     <>
       <Topbar />
-      <Header
-        title={selectedSubject.headerTitle}
-        dec={selectedSubject.headerDesc}
-      />
+      <Header title={selectedUnit.headerTitle} dec={selectedUnit.headerDesc} />
       <BodyLayout>
-        <MainTitle title={selectedSubject.mainTitle} />
-        <SubTitle title={selectedSubject.subTitle} />
-        <UnitSelect
-          title={selectedSubject.mainTitle}
-          subTitle={selectedSubject.subTitle}
-          buttons={selectedSubject.buttons}
-        />
+        <MainTitle title={selectedUnit.mainTitle} />
+        <SubTitle title={selectedUnit.subTitle} />
+        <UnitSelect buttons={selectedUnit.buttons} />
       </BodyLayout>
     </>
   );

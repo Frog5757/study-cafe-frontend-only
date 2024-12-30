@@ -7,11 +7,11 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const isFormValid = email.length > 0 && password.length > 0;
 
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("ログイン成功！");
     } catch (err) {
       console.log(err);
       setError("メールアドレスまたはパスワードが間違っています。");
@@ -20,7 +20,6 @@ const Login: React.FC = () => {
 
   return (
     <div>
-
       <div css={loginWrapper}>
         <div css={subTitle}>メールアドレス</div>
         <input
@@ -38,7 +37,11 @@ const Login: React.FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button css={loginButton} onClick={handleLogin}>
+        <button
+          css={[loginButton, isFormValid && loginButtonActive]} // isFormValidに基づいてスタイルを変更
+          onClick={handleLogin}
+          disabled={!isFormValid} // フォームが無効な場合はボタンを無効化
+        >
           ログイン
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
@@ -70,9 +73,16 @@ const loginButton = css`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
+  
+  &:disabled {
+    background-color: #d3d3d3; /* ボタンが無効な場合は色を変更 */
+    cursor: not-allowed; /* マウスカーソルを変更 */
+  }
+`;
+const loginButtonActive = css`
+  background-color: #4caf50; /* フォームが入力されている場合は緑色に */
   &:hover {
-    background-color: #898989;
+    background-color: #45a049;
   }
 `;
 export default Login;
