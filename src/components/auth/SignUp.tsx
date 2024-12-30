@@ -21,7 +21,7 @@ const signUpUser = async (email: string, password: string) => {
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
+  const isFormValid = email.length > 0 && password.length > 0;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -53,7 +53,11 @@ const SignUp: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button css={signupButton} type="submit">
+        <button
+          css={[signupButton, isFormValid && signUpButtonActive]}
+          type="submit"
+          disabled={!isFormValid}
+        >
           登録
         </button>
       </div>
@@ -84,8 +88,15 @@ const signupButton = css`
   border-radius: 5px;
   cursor: pointer;
 
+  &:disabled {
+    background-color: #d3d3d3; /* ボタンが無効な場合は色を変更 */
+    cursor: not-allowed; /* マウスカーソルを変更 */
+  }
+`;
+const signUpButtonActive = css`
+  background-color: #4caf50; /* フォームが入力されている場合は緑色に */
   &:hover {
-    background-color: #898989;
+    background-color: #45a049;
   }
 `;
 export default SignUp;

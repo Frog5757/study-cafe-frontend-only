@@ -38,9 +38,9 @@ const Login: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          css={[loginButton, isFormValid && loginButtonActive]} // isFormValidに基づいてスタイルを変更
+          css={[loginButton, isFormValid && loginButtonActive]}
           onClick={handleLogin}
-          disabled={!isFormValid} // フォームが無効な場合はボタンを無効化
+          disabled={!isFormValid}
         >
           ログイン
         </button>
@@ -73,16 +73,16 @@ const loginButton = css`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  
+
   &:disabled {
     background-color: #d3d3d3; /* ボタンが無効な場合は色を変更 */
     cursor: not-allowed; /* マウスカーソルを変更 */
   }
 `;
 const loginButtonActive = css`
-  background-color: #4caf50; /* フォームが入力されている場合は緑色に */
+  background-color: #56bbc7; /* フォームが入力されている場合は緑色に */
   &:hover {
-    background-color: #45a049;
+    background-color: #4dafba;
   }
 `;
 export default Login;
