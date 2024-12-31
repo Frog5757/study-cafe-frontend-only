@@ -53,7 +53,7 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const saveResultToDatabase = async () => {
     const auth = getAuth();
     const user = auth.currentUser;
-
+    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
     if (!user) {
       alert(
         "ログインしていません。診断結果を保存するにはログインしてください。"
