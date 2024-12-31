@@ -2,8 +2,8 @@
 import { css } from "@emotion/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { getAuth } from "firebase/auth"; 
-import axios from "axios"; 
+import { getAuth } from "firebase/auth";
+import axios from "axios";
 import MainTitle from "./title/MainTitle";
 import BodyLayout from "../layouts/BodyLayout";
 
@@ -11,6 +11,7 @@ interface ResultProps {
   userAnswers: string[];
   questions: { id: number; question: string; resultMessage: string }[];
 }
+
 const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const { subject, unit } = useParams();
   const navigate = useNavigate(); // リダイレクトに使用するフック
@@ -38,6 +39,7 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
         return "未定義";
     }
   };
+
   const determineResult = () => {
     const results = questions
       .map((q, index) => (userAnswers[index] === "No" ? q.resultMessage : null))
@@ -71,7 +73,16 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
 
     try {
       const idToken = await user.getIdToken();
-      await axios.post("http://localhost:4000/api/results/save", resultData, {
+
+      // 環境変数からAPI URLを取得してPOSTリクエストを送信
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+      if (!apiUrl) {
+        alert("APIのURLが設定されていません。");
+        return;
+      }
+
+      await axios.post(`${apiUrl}/api/results/save`, resultData, {
         headers: {
           Authorization: `Bearer ${idToken}`,
         },
