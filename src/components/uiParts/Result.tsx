@@ -53,7 +53,7 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const saveResultToDatabase = async () => {
     const auth = getAuth();
     const user = auth.currentUser;
-    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+
     if (!user) {
       alert(
         "ログインしていません。診断結果を保存するにはログインしてください。"
@@ -73,16 +73,15 @@ const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
 
     try {
       const idToken = await user.getIdToken();
-
-      // 環境変数からAPI URLを取得してPOSTリクエストを送信
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-      if (!apiUrl) {
+      // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      const LocalApiUrl = import.meta.env.VITE_API_URL;
+      console.log(import.meta);
+      if (!LocalApiUrl) {
         alert("APIのURLが設定されていません。");
         return;
       }
 
-      await axios.post(`${apiUrl}/api/results/save`, resultData, {
+      await axios.post(`${LocalApiUrl}/api/results/save`, resultData, {
         headers: {
           Authorization: `Bearer ${idToken}`,
         },

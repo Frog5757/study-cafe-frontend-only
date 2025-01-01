@@ -23,7 +23,7 @@ const MyPage: React.FC<MyPageProps> = ({ user }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   // Vercelの環境変数からバックエンドのURLを取得
-  const API_URL = process.env.NEXT_PUBLIC_API_URL; // Vercelの環境変数を使う
+  const API_URL = import.meta.env.VITE_API_URL;
 
   // 診断結果を取得する関数
   const getResultFromDatabase = async () => {
