@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import IconButton from "./button/IconButton";
 import { ReactNode } from "react";
+import {IconButton} from "./button/IconButton";
 
 interface SubjectSelectProps {
   buttons: {
@@ -12,7 +12,7 @@ interface SubjectSelectProps {
   }[];
 }
 
-export default function SubjectSelect({ buttons }: SubjectSelectProps) {
+export const SubjectSelect = ({ buttons }: SubjectSelectProps) => {
   return (
     <div css={buttonsWrapper}>
       {buttons.map((btn, index) => (
@@ -26,17 +26,17 @@ export default function SubjectSelect({ buttons }: SubjectSelectProps) {
       ))}
     </div>
   );
-}
+};
 
 const buttonsWrapper = css`
   display: flex;
   justify-content: center;
   gap: 80px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    gap: 40px; 
-    justify-content: center; 
+    gap: 40px;
+    justify-content: center;
   }
   @media (max-width: 480px) {
     gap: 20px;

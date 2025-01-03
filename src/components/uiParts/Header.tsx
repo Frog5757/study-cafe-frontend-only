@@ -5,7 +5,7 @@ interface HeaderProps {
   title: string;
   dec?: string;
 }
-const Header: React.FC<HeaderProps> = ({ title, dec }) => {
+export const Header: React.FC<HeaderProps> = ({ title, dec }) => {
   return (
     <>
       <div css={mainHeader}>
@@ -27,7 +27,7 @@ const mainHeader = css`
   text-align: center;
 
   @media (max-width: 768px) {
-    height: 150px; 
+    height: 150px;
   }
 `;
 
@@ -46,7 +46,7 @@ const headerTitle = css`
   color: #7c7c7c;
 
   @media (max-width: 768px) {
-    font-size: 40px; 
+    font-size: 40px;
     letter-spacing: 5px;
   }
 
@@ -55,4 +55,3 @@ const headerTitle = css`
     letter-spacing: 3px;
   }
 `;
-export default Header;

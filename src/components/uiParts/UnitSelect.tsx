@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import IconButton from "./button/IconButton";
+import { IconButton } from "./button/IconButton";
 import { ReactNode } from "react";
 interface UnitSelectProps {
   buttons: { icon: ReactNode; label: string; to: string; bgColor: string }[];
 }
-export default function UnitSelect({ buttons }: UnitSelectProps) {
+export const UnitSelect = ({ buttons }: UnitSelectProps) => {
   return (
     <>
       <div css={buttonsWrapper}>
@@ -21,7 +21,7 @@ export default function UnitSelect({ buttons }: UnitSelectProps) {
       </div>
     </>
   );
-}
+};
 const buttonsWrapper = css`
   display: flex;
   justify-content: center;

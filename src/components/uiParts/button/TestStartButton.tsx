@@ -6,7 +6,7 @@ interface TestStartButtonProps {
   onClick?: () => void;
 }
 
-const TestStartButton: React.FC<TestStartButtonProps> = ({
+export const TestStartButton: React.FC<TestStartButtonProps> = ({
   onClick,
   title,
 }) => {
@@ -55,4 +55,3 @@ const startButton = css`
   }
 `;
 
-export default TestStartButton;

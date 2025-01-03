@@ -1,15 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { useParams } from "react-router-dom";
-import Topbar from "../../components/layouts/Topbar";
-import Header from "../../components/uiParts/Header";
-import Question from "../../components/uiParts/Question";
+import {Topbar} from "../../components/layouts/Topbar";
+import {Header} from "../../components/uiParts/Header";
+import {Question} from "../../components/uiParts/Question";
 import {
   seifunokazuQuestions,
   addSubQuestions,
   bedoushiNoKihonQuestion,
   bedoushiNoKakoGimonQuestion
 } from "../../data/questions";
-const QuestionPage = () => {
+export const QuestionPage = () => {
   const { unit } = useParams();
   return (
     <>
@@ -42,4 +42,3 @@ const QuestionPage = () => {
   );
 };
 
-export default QuestionPage;

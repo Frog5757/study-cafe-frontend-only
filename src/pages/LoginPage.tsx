@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "../config/firebase"; // Firebaseの認証設定をインポート
-import Topbar from "../components/layouts/Topbar";
-import Header from "../components/uiParts/Header";
-import BodyLayout from "../components/layouts/BodyLayout";
-import Login from "../components/auth/Login";
-import MyPage from "./MyPage";
-import MainTitle from "../components/uiParts/title/MainTitle";
-const LoginPage: React.FC = () => {
+import { Topbar } from "../components/layouts/Topbar";
+import { Header } from "../components/uiParts/Header";
+import { BodyLayout } from "../components/layouts/BodyLayout";
+import { Login } from "../components/auth/Login";
+import { MyPage } from "./MyPage";
+import { MainTitle } from "../components/uiParts/title/MainTitle";
+export const LoginPage: React.FC = () => {
   const [user, setUser] = useState<User | null>(null); // Firebase User型を使用
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
   return (
     <div>
       <Topbar />
-      <Header title="ログインページ"/>
+      <Header title="ログインページ" />
       <BodyLayout>
         <MainTitle title="ログイン" />
         {user ? <MyPage user={user} /> : <Login />}
@@ -36,5 +36,3 @@ const LoginPage: React.FC = () => {
     </div>
   );
 };
-
-export default LoginPage;

@@ -3,16 +3,16 @@ import { css } from "@emotion/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import { MainTitle } from "./title/MainTitle";
+import { BodyLayout } from "../layouts/BodyLayout";
 import axios from "axios";
-import MainTitle from "./title/MainTitle";
-import BodyLayout from "../layouts/BodyLayout";
 
 interface ResultProps {
   userAnswers: string[];
   questions: { id: number; question: string; resultMessage: string }[];
 }
 
-const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
+export const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const { subject, unit } = useParams();
   const navigate = useNavigate(); // リダイレクトに使用するフック
   const convertSubject = (subject: string | undefined): string => {
@@ -164,4 +164,3 @@ const saveResult = css`
   }
 `;
 
-export default Result;

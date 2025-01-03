@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { User } from "firebase/auth";
+import { Topbar } from "../components/layouts/Topbar";
+import { Header } from "../components/uiParts/Header";
+import { BodyLayout } from "../components/layouts/BodyLayout";
+import { MainTitle } from "../components/uiParts/title/MainTitle";
 import axios from "axios";
-import Topbar from "../components/layouts/Topbar";
-import Header from "../components/uiParts/Header";
-import BodyLayout from "../components/layouts/BodyLayout";
-import MainTitle from "../components/uiParts/title/MainTitle";
 
 interface MyPageProps {
   user: User | null;
@@ -18,7 +18,7 @@ interface Result {
   timestamp: string;
 }
 
-const MyPage: React.FC<MyPageProps> = ({ user }) => {
+export const MyPage: React.FC<MyPageProps> = ({ user }) => {
   const [results, setResults] = useState<Result[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -108,5 +108,3 @@ const MyPage: React.FC<MyPageProps> = ({ user }) => {
     </div>
   );
 };
-
-export default MyPage;

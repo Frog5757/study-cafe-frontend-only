@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { useParams } from "react-router-dom";
-import Topbar from "../../components/layouts/Topbar";
-import Header from "../../components/uiParts/Header";
-import BodyLayout from "../../components/layouts/BodyLayout";
-import UnitSelect from "../../components/uiParts/UnitSelect";
-import MainTitle from "../../components/uiParts/title/MainTitle";
-import SubTitle from "../../components/uiParts/title/SubTitle";
+import {Topbar} from "../../components/layouts/Topbar";
+import {Header} from "../../components/uiParts/Header";
+import {BodyLayout} from "../../components/layouts/BodyLayout";
+import {UnitSelect} from "../../components/uiParts/UnitSelect";
+import {MainTitle} from "../../components/uiParts/title/MainTitle";
+import {SubTitle} from "../../components/uiParts/title/SubTitle";
 import { AccessTime, Calculate } from "@mui/icons-material";
 
-const UnitSelectPage = () => {
+export const UnitSelectPage = () => {
   const { subject } = useParams();
   const unitData = {
     math: {
@@ -66,4 +66,3 @@ const UnitSelectPage = () => {
   );
 };
 
-export default UnitSelectPage;

@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import Topbar from "../../components/layouts/Topbar";
-import Header from "../../components/uiParts/Header";
-import BodyLayout from "../../components/layouts/BodyLayout";
-import SubjectSelect from "../../components/uiParts/SubjectSelect";
-import MainTitle from "../../components/uiParts/title/MainTitle";
+import { Topbar } from "../../components/layouts/Topbar";
+import { Header } from "../../components/uiParts/Header";
+import { BodyLayout } from "../../components/layouts/BodyLayout";
+import { SubjectSelect } from "../../components/uiParts/SubjectSelect";
+import { MainTitle } from "../../components/uiParts/title/MainTitle";
 import { Abc, SquareFoot } from "@mui/icons-material";
 
 const subjectData = [
@@ -21,7 +21,7 @@ const subjectData = [
   },
 ];
 
-export default function SubjectSelectPage() {
+export const SubjectSelectPage = () => {
   return (
     <>
       <Topbar />
@@ -32,4 +32,4 @@ export default function SubjectSelectPage() {
       </BodyLayout>
     </>
   );
-}
+};

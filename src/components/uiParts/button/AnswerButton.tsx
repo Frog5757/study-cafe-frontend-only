@@ -6,7 +6,7 @@ interface AnswerButtonProps {
   onClick: () => void;
 }
 
-const AnswerButton: React.FC<AnswerButtonProps> = ({ label, onClick }) => {
+export const AnswerButton: React.FC<AnswerButtonProps> = ({ label, onClick }) => {
   return (
     <button onClick={onClick} css={buttonStyle}>
       {label}
@@ -46,4 +46,3 @@ const buttonStyle = css`
   }
 `;
 
-export default AnswerButton;

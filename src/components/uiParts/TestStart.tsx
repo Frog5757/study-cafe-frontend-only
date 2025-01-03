@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Items from "./Items";
-import Header from "./Header";
-import BodyLayout from "../layouts/BodyLayout";
-import TestStartButton from "./button/TestStartButton";
-import MainTitle from "./title/MainTitle";
+import {Items} from "./Items";
+import {Header} from "./Header";
+import {BodyLayout} from "../layouts/BodyLayout";
+import {TestStartButton} from "./button/TestStartButton";
+import {MainTitle} from "./title/MainTitle";
 
 interface TestStartProps {
   headerTitle: string;
@@ -15,7 +15,7 @@ interface TestStartProps {
   onStartTest: () => void;
 }
 
-const TestStart: React.FC<TestStartProps> = ({
+export const TestStart: React.FC<TestStartProps> = ({
   headerTitle,
   mainTitle,
   startButtonTitle,
@@ -43,4 +43,3 @@ const buttonWrapper = css`
   margin-top: 50px;
 `;
 
-export default TestStart;

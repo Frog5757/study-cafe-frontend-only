@@ -2,23 +2,21 @@
 import { css } from "@emotion/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { auth } from "../../config/firebase"; // Firebase設定をインポート
+import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 
-export default function Topbar() {
+export const Topbar = () => {
   const { user } = useAuth();
-  const navigate = useNavigate(); // ページ遷移のためのフック
-
+  const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Firebaseのサインアウト関数
-      navigate("/login"); // ログインページへリダイレクト
+      await signOut(auth);
+      navigate("/login");
     } catch (err) {
       console.error("ログアウトに失敗しました:", err);
       alert("ログアウトに失敗しました。");
     }
   };
-
   return (
     <div css={topbarContainer}>
       <div css={topbarLeft}>
@@ -34,7 +32,6 @@ export default function Topbar() {
           <Link to="/diagnostic/subjectselect" css={linkStyle}>
             <li css={topbarContent}>診断テスト</li>
           </Link>
-
           {user ? (
             <>
               <Link to="/mypage" css={linkStyle}>
@@ -58,7 +55,7 @@ export default function Topbar() {
       </div>
     </div>
   );
-}
+};
 
 const topbarContainer = css`
   background-color: hsl(0, 0%, 100%);
@@ -99,8 +96,7 @@ const topbarRight = css`
   @media (max-width: 768px) {
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%; 
-
+    width: 100%;
   }
 `;
 
@@ -150,7 +146,7 @@ const logo = css`
 
   @media (max-width: 768px) {
     margin-left: 0;
-    padding:10px 10px;
+    padding: 10px 10px;
   }
 `;
 

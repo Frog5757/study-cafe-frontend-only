@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useState } from "react";
-import Result from "./Result";
-
-import AnswerButton from "./button/AnswerButton";
+import { Result } from "./Result";
+import { AnswerButton } from "./button/AnswerButton";
 
 interface Question {
   id: number;
@@ -16,7 +15,7 @@ interface QuestionProps {
   resultMessage?: string;
 }
 
-const Question: React.FC<QuestionProps> = ({ questions }) => {
+export const Question: React.FC<QuestionProps> = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [isFinished, setIsFinished] = useState(false);
@@ -33,7 +32,6 @@ const Question: React.FC<QuestionProps> = ({ questions }) => {
   if (isFinished) {
     return (
       <>
-      
         <Result userAnswers={userAnswers} questions={questions} />
       </>
     );
@@ -123,5 +121,3 @@ const buttonsWrapper = css`
     gap: 20px;
   }
 `;
-
-export default Question;

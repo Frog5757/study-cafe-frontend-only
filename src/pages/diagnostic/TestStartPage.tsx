@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { useNavigate, useParams } from "react-router-dom";
-import Topbar from "../../components/layouts/Topbar";
-import TestStart from "../../components/uiParts/TestStart";
-const TestStartPage = () => {
+import {Topbar} from "../../components/layouts/Topbar";
+import {TestStart} from "../../components/uiParts/TestStart";
+export const TestStartPage = () => {
   const { subject, unit } = useParams();
   const navigate = useNavigate();
 
@@ -55,4 +55,4 @@ const TestStartPage = () => {
   );
 };
 
-export default TestStartPage;
+

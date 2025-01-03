@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
-const Login: React.FC = () => {
+export const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -85,4 +85,4 @@ const loginButtonActive = css`
     background-color: #4dafba;
   }
 `;
-export default Login;
+

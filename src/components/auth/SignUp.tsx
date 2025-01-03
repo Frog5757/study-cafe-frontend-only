@@ -18,7 +18,7 @@ const signUpUser = async (email: string, password: string) => {
   }
 };
 
-const SignUp: React.FC = () => {
+export const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const isFormValid = email.length > 0 && password.length > 0;
@@ -99,4 +99,3 @@ const signUpButtonActive = css`
     background-color: #45a049;
   }
 `;
-export default SignUp;

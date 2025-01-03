@@ -5,9 +5,9 @@ interface SubTitleProps {
   title: string;
 }
 
-export default function SubTitle({ title }: SubTitleProps) {
+export const SubTitle = ({ title }: SubTitleProps) => {
   return <div css={subTitle}>{title}</div>;
-}
+};
 
 const subTitle = css`
   color: #848484;

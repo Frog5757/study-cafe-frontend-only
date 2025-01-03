@@ -6,7 +6,7 @@ interface UnitProps {
   fontColor: string;
 }
 
-const Items: React.FC<UnitProps> = ({ items, fontColor }) => {
+export const Items: React.FC<UnitProps> = ({ items, fontColor }) => {
   return (
     <ul css={itemsStyle}>
       {items.map((item, index) => (
@@ -50,4 +50,4 @@ const itemStyle = css`
   }
 `;
 
-export default Items;
+
