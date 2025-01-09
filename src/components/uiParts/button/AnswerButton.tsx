@@ -19,7 +19,7 @@ const buttonStyle = css`
   color: #fff;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 50px;
   font-size: 30px;
   cursor: pointer;
   transition: background 0.3s;

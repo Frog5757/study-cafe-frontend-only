@@ -21,17 +21,12 @@ interface Result {
 export const MyPage: React.FC<MyPageProps> = ({ user }) => {
   const [results, setResults] = useState<Result[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
-  // Vercelの環境変数からバックエンドのURLを取得
   const API_URL = import.meta.env.VITE_API_URL;
-
   // 診断結果を取得する関数
   const getResultFromDatabase = async () => {
     if (!user || !API_URL) return;
-
     try {
       const token = await user.getIdToken();
-
       const response = await axios.get(`${API_URL}/api/results/get`, {
         headers: {
           Authorization: `Bearer ${token}`,

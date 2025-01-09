@@ -4,7 +4,7 @@ import {Topbar} from "../components/layouts/Topbar";
 import {Header} from "../components/uiParts/Header";
 import {MainTitle} from "../components/uiParts/title/MainTitle";
 import {BodyLayout} from "../components/layouts/BodyLayout";
-import IconButton from "../components/uiParts/button/IconButton";
+import {IconButton} from "../components/uiParts/button/IconButton";
 import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 
 export const HomePage = () => (

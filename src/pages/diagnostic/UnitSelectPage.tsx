@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { useParams } from "react-router-dom";
-import {Topbar} from "../../components/layouts/Topbar";
-import {Header} from "../../components/uiParts/Header";
-import {BodyLayout} from "../../components/layouts/BodyLayout";
-import {UnitSelect} from "../../components/uiParts/UnitSelect";
-import {MainTitle} from "../../components/uiParts/title/MainTitle";
-import {SubTitle} from "../../components/uiParts/title/SubTitle";
+import { Topbar } from "../../components/layouts/Topbar";
+import { Header } from "../../components/uiParts/Header";
+import { BodyLayout } from "../../components/layouts/BodyLayout";
+// import {UnitSelect} from "../../components/uiParts/UnitSelect";
+import { MainTitle } from "../../components/uiParts/title/MainTitle";
+import { SubTitle } from "../../components/uiParts/title/SubTitle";
 import { AccessTime, Calculate } from "@mui/icons-material";
 
 export const UnitSelectPage = () => {
@@ -60,9 +60,8 @@ export const UnitSelectPage = () => {
       <BodyLayout>
         <MainTitle title={selectedUnit.mainTitle} />
         <SubTitle title={selectedUnit.subTitle} />
-        <UnitSelect buttons={selectedUnit.buttons} />
+        {/* <UnitSelect buttons={selectedUnit.buttons} /> */}
       </BodyLayout>
     </>
   );
 };
-

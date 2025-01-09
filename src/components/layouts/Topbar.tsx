@@ -29,7 +29,7 @@ export const Topbar = () => {
           <Link to="/" css={linkStyle}>
             <li css={topbarContent}>ホーム</li>
           </Link>
-          <Link to="/diagnostic/subjectselect" css={linkStyle}>
+          <Link to="/diagnostic" css={linkStyle}>
             <li css={topbarContent}>診断テスト</li>
           </Link>
           {user ? (

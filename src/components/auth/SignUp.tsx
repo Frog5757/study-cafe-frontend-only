@@ -3,7 +3,8 @@ import { css } from "@emotion/react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import React, { useState } from "react";
-
+import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 const signUpUser = async (email: string, password: string) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -11,7 +12,12 @@ const signUpUser = async (email: string, password: string) => {
       email,
       password
     );
-    return userCredential.user;
+    const user = userCredential.user;
+    await axios.post(`${API_URL}/api/signup`, {
+      uid: user.uid,
+      email: user.email,
+    });
+    console.log(user.uid);
   } catch (err) {
     console.error("Registration error:", err);
     throw err;

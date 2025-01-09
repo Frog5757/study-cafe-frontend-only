@@ -9,12 +9,12 @@ import axios from "axios";
 
 interface ResultProps {
   userAnswers: string[];
-  questions: { id: number; question: string; resultMessage: string }[];
+  questions?: { id: number; question: string; resultMessage: string }[];
 }
 
 export const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const { subject, unit } = useParams();
-  const navigate = useNavigate(); // リダイレクトに使用するフック
+  const navigate = useNavigate(); 
   const convertSubject = (subject: string | undefined): string => {
     switch (subject) {
       case "math":
@@ -28,7 +28,7 @@ export const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
   const convertUnit = (unit: string | undefined): string => {
     switch (unit) {
       case "seinosu-funosu":
-        return "正の数と負の数";
+        return "正負の数";
       case "add-sub":
         return "加法・減法";
       case "bedoushi-kihon":
@@ -99,6 +99,7 @@ export const Result: React.FC<ResultProps> = ({ userAnswers, questions }) => {
         <MainTitle title="診断結果" />
         <div css={resultwrapper}>
           <div css={resultContainer}>
+            <div>{userAnswers}</div>
             <p css={resultContent}>{determineResult()}</p>
             <p css={saveResult} onClick={saveResultToDatabase}>
               この診断結果を保存する
