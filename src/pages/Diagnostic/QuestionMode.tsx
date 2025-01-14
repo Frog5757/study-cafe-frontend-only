@@ -8,7 +8,6 @@ export const QuestionMode: FC<{
   questions: Question[];
 }> = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  // オブジェクトの配列にする
   const [userAnswers, setUserAnswers] = useState<
     {
       questionId: string;
@@ -32,8 +31,23 @@ export const QuestionMode: FC<{
   };
   const currentQuestion = questions[currentIndex];
   if (isFinished) {
-    console.log(userAnswers);
-    return <>{/* <h1>{userAnswers}</h1> */}</>;
+    const noAnswers = userAnswers
+      .filter((answer) => !answer.yesOrNo)
+      .map((answer) => {
+        const question = questions.find((q) => q.id === answer.questionId)
+        return question?.noMessage;
+      })
+    return (
+      <div>
+        <h1>Noで回答した質問:</h1>
+        <ul>
+          {noAnswers.map((msg, index) => (
+            <li key={index}>{msg}</li>
+          ))}
+        </ul>
+        <div>診断結果を保存する</div>
+      </div>
+    );
   }
   return (
     <>

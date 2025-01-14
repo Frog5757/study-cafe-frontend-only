@@ -9,7 +9,7 @@ export type Question = {
   order: string;
   unitId: string;
   description: string;
-  resultMessage: string; 
+  noMessage: string;
 };
 
 export const useQuestions = () => {
@@ -23,7 +23,16 @@ export const useQuestions = () => {
       .then((response) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const us = response.data.map((a: any) => humps.camelizeKeys(a));
-        setQuestions(us);
+
+        // 型を Question[] にキャスト
+        const typedQuestions = us as Question[];
+
+        // orderでソート
+        const sortedQuestions = typedQuestions.sort((a, b) => {
+          return parseInt(a.order) - parseInt(b.order); // 数字としてソート
+        });
+
+        setQuestions(sortedQuestions);
       })
       .catch((error) => {
         console.error("Error fetching questions:", error);

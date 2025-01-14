@@ -38,17 +38,8 @@ export const IconButton: React.FC<ButtonProps> = ({
       </Link>
     );
   }
-
   return <div onClick={onClick}>{buttonContent}</div>;
 };
-
-const iconName = css`
-  font-size: 25px;
-  color: #ffffff;
-  @media (max-width: 768px) {
-    font-size: 15px;
-  }
-`;
 
 const buttonWrapper = css`
   height: 200px;
@@ -61,6 +52,7 @@ const buttonWrapper = css`
   border-radius: 50px;
   transition: 0.5s;
   cursor: pointer;
+  position: relative; /* アイコンとラベルの位置がずれないように */
 
   &:hover {
     transform: scale(1.1, 1.1);
@@ -72,25 +64,39 @@ const buttonWrapper = css`
   }
 `;
 
-const linkStyle = css`
-  text-decoration: none;
-  color: inherit;
+const iconName = css`
+  font-size: 20px;
+  height: 50px;
+  color: #ffffff;
+  display: flex;
+  text-align: center;
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 const buttonDescription = css`
   margin-top: 10px;
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
   color: #555;
   max-width: 200px;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  line-height: 1.4;
 
   @media (max-width: 768px) {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   @media (max-width: 480px) {
-    font-size: 10px;
+    font-size: 14px;
   }
 `;
 
-
+const linkStyle = css`
+  text-decoration: none;
+  color: inherit;
+`;

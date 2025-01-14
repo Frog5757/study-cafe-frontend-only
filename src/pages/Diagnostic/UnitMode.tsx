@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { MainTitle } from "../../components/uiParts/title/MainTitle";
-import { AccessTime, Calculate } from "@mui/icons-material";
+import { Abc, Calculate } from "@mui/icons-material";
 import { FC } from "react";
 import { Unit } from "../../hooks/api/useUnits";
 import { IconButton } from "../../components/uiParts/button/IconButton";
@@ -9,9 +9,19 @@ import { IconButton } from "../../components/uiParts/button/IconButton";
 export const UnitMode: FC<{
   units: Unit[];
   onClickButton: (unitId: string) => void;
-}> = ({ units,onClickButton }) => {
+}> = ({ units, onClickButton }) => {
   const mainTitle = "単元を選択してください";
-
+  const iconStyle = { fontSize: "90px", color: "#ffffff" };
+  const getIconForSubject = (subjectId: string) => {
+    switch (subjectId.toString()) {
+      case "1":
+        return <Calculate sx={iconStyle} />;
+      case "2":
+        return <Abc sx={iconStyle} />;
+      default:
+        return <Calculate />;
+    }
+  };
   return (
     <>
       <MainTitle title={mainTitle} />
@@ -20,9 +30,9 @@ export const UnitMode: FC<{
           return (
             <IconButton
               key={unit.id}
-              icon={<Calculate sx={{ fontSize: "100px", color: "#ffffff" }} />}
+              icon={getIconForSubject(unit.subjectId)}
               label={unit.name}
-              bgColor={"#fa2ea7"}
+              bgColor={"#c1c1c1"}
               onClick={() => onClickButton(unit.id)}
             />
           );
